@@ -5,30 +5,28 @@ public class MainButClean {
         // Initialize scanner and game variables
         Scanner scanner = new Scanner(System.in);
         String[] a = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        String boardString = "     |     |     %n  %s  |  %s  |  %s  %n_____|_____|_____%n     |     |     %n  %s  |  %s  |  %s  %n_____|_____|_____ %n     |     |     %n  %s  |  %s  |  %s  %n     |     |     ";
+        String board = String.format(boardString, a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8]);
         int turn = 0;
         String currentPlayer = "O"; // Start with O
         boolean gameOver = false;
 
         while (!gameOver) {
-            // Create the board string
-            String testBoard = String.format("     |     |     %n  %s  |  %s  |  %s  %n_____|_____|_____%n     |     |     %n  %s  |  %s  |  %s  %n_____|_____|_____ %n     |     |     %n  %s  |  %s  |  %s  %n     |     |     ", a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8]);
-
             // Display the board at the start of the game
             if (turn == 0) {
                 System.out.println("Welcome to Tic Tac Toe!");
-                testBoard = String.format("     |     |     %n  %s  |  %s  |  %s  %n_____|_____|_____%n     |     |     %n  %s  |  %s  |  %s  %n_____|_____|_____ %n     |     |     %n  %s  |  %s  |  %s  %n     |     |     ", a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8]);
-                System.out.println(testBoard);
+                System.out.println(board);
             }
 
             while (true) {
-                // O's turn
+                // Players's turn
                 System.out.print(currentPlayer+"'s turn, Choose a number (1-9): ");
                 int currentInput = scanner.nextInt();
                 if (currentInput >= 1 && currentInput <= 9 && !a[currentInput - 1].equals("O") && !a[currentInput - 1].equals("X")) {
                     a[currentInput - 1] = currentPlayer;
                     turn++;
-                    testBoard = String.format("     |     |     %n  %s  |  %s  |  %s  %n_____|_____|_____%n     |     |     %n  %s  |  %s  |  %s  %n_____|_____|_____ %n     |     |     %n  %s  |  %s  |  %s  %n     |     |     ", a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8]);
-                    System.out.println(testBoard);
+                    board = String.format(boardString, a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8]);
+                    System.out.println(board);
                     if (turn >= 9) break;
                     break;
                 // Invalid input handling
