@@ -4,9 +4,9 @@ public class MainButClean {
     public static void main(String[] args) {
         // Initialize scanner and game variables
         Scanner scanner = new Scanner(System.in);
-        String[] a = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        String[] boardState = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         String boardString = "     |     |     %n  %s  |  %s  |  %s  %n_____|_____|_____%n     |     |     %n  %s  |  %s  |  %s  %n_____|_____|_____ %n     |     |     %n  %s  |  %s  |  %s  %n     |     |     ";
-        String board = String.format(boardString, a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8]);
+        String board = String.format(boardString, boardState[0], boardState[1], boardState[2], boardState[3], boardState[4], boardState[5], boardState[6], boardState[7], boardState[8]);
         int turn = 0;
         String currentPlayer = "O"; // Start with O
         boolean gameOver = false;
@@ -22,10 +22,10 @@ public class MainButClean {
                 // Players's turn
                 System.out.print(currentPlayer+"'s turn, Choose a number (1-9): ");
                 int currentInput = scanner.nextInt();
-                if (currentInput >= 1 && currentInput <= 9 && !a[currentInput - 1].equals("O") && !a[currentInput - 1].equals("X")) {
-                    a[currentInput - 1] = currentPlayer;
+                if (currentInput >= 1 && currentInput <= 9 && !boardState[currentInput - 1].equals("O") && !boardState[currentInput - 1].equals("X")) {
+                    boardState[currentInput - 1] = currentPlayer;
                     turn++;
-                    board = String.format(boardString, a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8]);
+                    board = String.format(boardString, boardState[0], boardState[1], boardState[2], boardState[3], boardState[4], boardState[5], boardState[6], boardState[7], boardState[8]);
                     System.out.println(board);
                     if (turn >= 9) break;
                     break;
@@ -43,8 +43,8 @@ public class MainButClean {
             }
 
             // Check for a winner
-            if (checkWinner(a) != null) {
-                System.out.println(checkWinner(a) + " wins!");
+            if (checkWinner(boardState) != null) {
+                System.out.println(checkWinner(boardState) + " wins!");
                 gameOver = true;
             } else if (turn >= 9) {
                 System.out.println("It's a draw!");
@@ -53,20 +53,20 @@ public class MainButClean {
         }
         scanner.close();
     }
-    public static String checkWinner(String[] a) {
+    public static String checkWinner(String[] boardState) {
         // Rows
-        if (a[0].equals(a[1]) && a[1].equals(a[2])) return a[0];
-        if (a[3].equals(a[4]) && a[4].equals(a[5])) return a[3];
-        if (a[6].equals(a[7]) && a[7].equals(a[8])) return a[6];
+        if (boardState[0].equals(boardState[1]) && boardState[1].equals(boardState[2])) return boardState[0];
+        if (boardState[3].equals(boardState[4]) && boardState[4].equals(boardState[5])) return boardState[3];
+        if (boardState[6].equals(boardState[7]) && boardState[7].equals(boardState[8])) return boardState[6];
 
         // Columns
-        if (a[0].equals(a[3]) && a[3].equals(a[6])) return a[0];
-        if (a[1].equals(a[4]) && a[4].equals(a[7])) return a[1];
-        if (a[2].equals(a[5]) && a[5].equals(a[8])) return a[2];
+        if (boardState[0].equals(boardState[3]) && boardState[3].equals(boardState[6])) return boardState[0];
+        if (boardState[1].equals(boardState[4]) && boardState[4].equals(boardState[7])) return boardState[1];
+        if (boardState[2].equals(boardState[5]) && boardState[5].equals(boardState[8])) return boardState[2];
 
         // Diagonals
-        if (a[0].equals(a[4]) && a[4].equals(a[8])) return a[0];
-        if (a[2].equals(a[4]) && a[4].equals(a[6])) return a[2];
+        if (boardState[0].equals(boardState[4]) && boardState[4].equals(boardState[8])) return boardState[0];
+        if (boardState[2].equals(boardState[4]) && boardState[4].equals(boardState[6])) return boardState[2];
 
         return null; // no winner yet
     }
