@@ -27,7 +27,6 @@ public class MainButClean {
                     turn++;
                     board = String.format(boardString, boardState[0], boardState[1], boardState[2], boardState[3], boardState[4], boardState[5], boardState[6], boardState[7], boardState[8]);
                     System.out.println(board);
-                    if (turn >= 9) break;
                     break;
                 // Invalid input handling
                 } else {
