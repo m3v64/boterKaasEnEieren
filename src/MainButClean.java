@@ -17,6 +17,7 @@ public class MainButClean {
             }
             
             while (true) {
+                // Input handling with exception catching
                 try {
                     // Players's turn
                     System.out.print(currentPlayer+"'s turn, Choose a number (1-9): ");
