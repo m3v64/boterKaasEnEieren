@@ -1,6 +1,7 @@
+package dev.m3v;
 import java.util.Scanner;
 
-public class MainButClean {
+public class MainBase {
     public static void main(String[] args) {
         // Initialize scanner and game variables
         Scanner scanner = new Scanner(System.in);

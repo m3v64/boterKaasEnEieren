@@ -1,3 +1,5 @@
-boterKaasEnEieren/lib
-boterKaasEnEieren/.vscode
+lib/
+bin/
+.vscode/
 *.class
+
